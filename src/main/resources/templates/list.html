@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>book list</title>
+		<link rel="stylesheet" th:href="@{/css/style.css}">
+	</head>
+	<body>
+		<!--brouzer-->
+		<div id="wrap">
+		
+			<!--headre-->
+			<header>
+				<div calsee = "container">
+					<h1>book management system Spring ver.00.5</h1>
+				</dev>
+			</header>	
+			
+			<!--menu-->
+			<div id="menu">
+				<div calsee = "container">
+					<!--navigation-->
+					<div id="nav">
+						<ni>
+							<li><a href="/menu">[menu]</a></li>
+							<li><a href="/insert">[regist]</a></li>
+						</ni>
+					</div>
+					
+					<!--page tytle-->
+					<div id="page_title">
+						<h2>book list</h2>
+					</div>
+				</div>
+			</div>						
+			
+			<!--contants of book list-->	
+			<div calsee = "container">
+				
+				<!--search form-->
+				<form class="inline-block" action="/search">
+					 ISBN<input type="text" name="isbn">
+					 TITLE<input type="text" name="title">
+					 PRICE<input type="text" name="price">
+					 <input type="submit" value="search">
+				</form>
+				<form class="inline-block" action="/list">
+					<input type="submit" value="display all">
+				</form>
+				
+				<!--book infomation list-->
+				<table class="list-table">
+					<thead>
+						<tr>
+							<th>ISBN</th>
+							<th>TITLE</th>
+							<th>PRICE</th>
+							<th>CHANGE / DELETE</th>
+					</thead>
+					<tbody th:if="${book_list.size() >= 1}">
+						<tr th:each="book:${book_list}" th:object="${book}">
+							<td><a href="#" th:text="${book.isbn}"></a></td>
+							<td th:text="${book.title}"></td>
+							<td th:text="${book.price}"></td>
+							<td>
+								<a href="#">change</a>
+								<a href="#">delete</a>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			
+			<!--footer-->
+			<footer>
+				<div class="container">
+					<h4>Copyright&copy; 2023 All Right Reserved.</h4>
+				</div>
+			</footer>					
+		</div>
+		
+	</body>
+</html>
